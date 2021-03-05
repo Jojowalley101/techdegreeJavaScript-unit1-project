@@ -24,7 +24,8 @@ var quotes = [
 
   {
   quote: 'Try to be a rainbow in someone elses cloud', 
-    source: 'Maya Angelou', 
+    source: 'Maya Angelou',
+    tags: 'joy' 
   }, 
   {
     quote: 'I have discovered in life that there are ways of getting almost anywhere you want to go, if you really want to go.', 
@@ -54,11 +55,10 @@ function diceRoll(array) {
 }
 ***/
 
-function getRandomQuote(quotes) {
-  var randomNumber = Math.floor(Math.random()*quotes.length);
-  var randomNumberGrabber = Math.floor(Math.random()*quotes[randomNumber]);
-  console.log(getRandomQuote(randomNumberGrabber))
-  return randomNumberGrabber;
+function getRandomQuote() {
+  let randomQuote = Math.floor(Math.random() * quotes.length);
+  var randomQuoteGrabber = Math.floor(Math.random() * quotes[randomQuote]);
+  return randomQuoteGrabber;
 }
 
 /***
@@ -90,11 +90,19 @@ function getRandomQuote(quotes) {
   // complete HTML string
 }
 ***/
-  
-var randomQuote = getRandomQuote(randomNumberGrabber);
-if (randomQuote.citation) {
-  
-}
+function printQuote() {
+  var randomQuote = getRandomQuote();
+
+  var html = '';
+  if (randomQuote.citation) {
+    html = `
+      <p>${html.quote}
+      <p>${html.source} 
+      <p>${html.citation}
+      <p>${html.year}
+      </p>
+`;}
+document.getElementById('quote-box').innerHTML = quotes[html];
 
 
 /***
@@ -103,4 +111,4 @@ if (randomQuote.citation) {
 ***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
-
+}
