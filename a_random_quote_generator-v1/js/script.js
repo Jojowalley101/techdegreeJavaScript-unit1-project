@@ -2,7 +2,7 @@
 Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
-
+console.log('test');
 // For assistance: 
   // Check the "Project Resources" section of the project instructions
   // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
@@ -11,7 +11,31 @@ project 1 - A Random Quote Generator
  * `quotes` array 
  * var quotes = [{}, {}, {}, {}, {}];
 ***/
-var quotes = [{}, {}, {}, {}, {}];
+
+var quotes = [
+  { quote: 'Life is very short and what we have to do must be done in the now.', 
+  source: 'Audre Lorde', 
+    citation: 'Audre Lorde Quotes. BrainyQuote.com. BrainyMedia Inc, 2021. 4 March 2021. www.brainyquote.com/quotes/audre_lorde_383487',
+    year: 2021}, 
+  { quote: 'It is not our differences that divide us. It is our inability to recognize, accept, and celebrate those differences.', 
+    source: 'Audre Lorde', 
+    citation: 'Audre Lorde Quotes. BrainyQuote.com. BrainyMedia Inc, 2021. 4 March 2021. https://www.brainyquote.com/quotes/audre_lorde_390625', 
+  year: 2021}, 
+
+  {
+  quote: 'Try to be a rainbow in someone elses cloud', 
+    source: 'Maya Angelou', 
+  }, 
+  {
+    quote: 'I have discovered in life that there are ways of getting almost anywhere you want to go, if you really want to go.', 
+    source: 'Langston Hughes'
+  }, 
+  {
+    quote: 'When someone shows you who they are, believe them the first time.',
+    source: 'Maya Angelou'}
+];
+
+console.log(quotes);
 
 /***
  * `getRandomQuote` function
@@ -31,8 +55,9 @@ function diceRoll(array) {
 ***/
 
 function getRandomQuote(quotes) {
-  var randomNumber = Math.ceil(Math.random()*quotes.length);
-  var randomNumberGrabber = Math.ceil(Math.random()[randomNumber]);
+  var randomNumber = Math.floor(Math.random()*quotes.length);
+  var randomNumberGrabber = Math.floor(Math.random()*quotes[randomNumber]);
+  console.log(getRandomQuote(randomNumberGrabber))
   return randomNumberGrabber;
 }
 
@@ -66,7 +91,10 @@ function getRandomQuote(quotes) {
 }
 ***/
   
-
+var randomQuote = getRandomQuote(randomNumberGrabber);
+if (randomQuote.citation) {
+  
+}
 
 
 /***
