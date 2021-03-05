@@ -36,8 +36,6 @@ var quotes = [
     source: 'Maya Angelou'}
 ];
 
-console.log(quotes);
-
 /***
  * `getRandomQuote` function
  * function getRandomQuote() {
@@ -56,9 +54,9 @@ function diceRoll(array) {
 ***/
 
 function getRandomQuote() {
-  let randomQuote = Math.floor(Math.random() * quotes.length);
-  var randomQuoteGrabber = Math.floor(Math.random() * quotes[randomQuote]);
-  return randomQuoteGrabber;
+  var randomQuote = Math.floor(Math.random() * quotes.length);
+  return quotes[randomQuote]
+  
 }
 
 /***
@@ -112,6 +110,7 @@ function printQuote() {
 
 document.getElementById('quote-box').innerHTML = quotes[htmlString];
 
+setInterval(printQuote(), 10000);
 
 /***
  * click event listener for the print quote button
