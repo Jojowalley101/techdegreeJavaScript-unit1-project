@@ -92,17 +92,25 @@ function getRandomQuote() {
 ***/
 function printQuote() {
   var randomQuote = getRandomQuote();
-
-  var html = '';
+  var htmlString = `
+  <p class='quote'${randomQuote.quote} </p>
+  <p class='source'${randomQuote.source} 
+  `;
   if (randomQuote.citation) {
-    html = `
-      <p>${html.quote}
-      <p>${html.source} 
-      <p>${html.citation}
-      <p>${html.year}
-      </p>
-`;}
-document.getElementById('quote-box').innerHTML = quotes[html];
+    htmlString += `<span class='citation'>${randomQuote.citation}</span>`;
+  }
+
+  if (randomQuote.year) {
+    htmlString += `<span class='year'>${randomQuote.year}</span>`;
+  }
+
+  htmlString += `</p>`;
+
+  if (randomQuote.tags) {
+    htmlString += `<p>${randomQuote.tags}</p>`;
+  }
+
+document.getElementById('quote-box').innerHTML = quotes[htmlString];
 
 
 /***
