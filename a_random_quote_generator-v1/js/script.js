@@ -2,7 +2,7 @@
 Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
-console.log('test');
+//console.log('test');
 // For assistance: 
   // Check the "Project Resources" section of the project instructions
   // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
@@ -54,9 +54,17 @@ function diceRoll(array) {
 ***/
 
 function getRandomQuote() {
-  var randomQuote = Math.floor(Math.random() * quotes.length);
-  return quotes[randomQuote]
+  var randomQuoteIndex = Math.floor(Math.random() * quotes.length);
+  return quotes[randomQuoteIndex];
   
+}
+
+getRandomQuote('go ahead and log out for me');
+
+
+function getRandomColor() {
+  var randomQuoteIndex = Math.floor(Math.random() * quotes.length) + 0;
+  return quotes[randomQuoteIndex];
 }
 
 /***
@@ -89,28 +97,40 @@ function getRandomQuote() {
 }
 ***/
 function printQuote() {
-  var randomQuote = getRandomQuote();
+  var randomColor = getRandomColor();
+  var randomQuoteIndex = getRandomQuote();
   var htmlString = `
-  <p class='quote'${randomQuote.quote} </p>
-  <p class='source'${randomQuote.source} 
+  <p class='quote'${randomQuoteIndex.quote} </p>
+  <p class='source'${randomQuoteIndex.source} 
   `;
-  if (randomQuote.citation) {
-    htmlString += `<span class='citation'>${randomQuote.citation}</span>`;
+  if (randomQuoteIndex.citation) {
+    htmlString += `<span class='citation'>${randomQuoteIndex.citation}</span>`;
   }
 
-  if (randomQuote.year) {
-    htmlString += `<span class='year'>${randomQuote.year}</span>`;
+  if (randomQuoteIndex.year) {
+    htmlString += `<span class='year'>${randomQuoteIndex.year}</span>`;
   }
 
   htmlString += `</p>`;
 
-  if (randomQuote.tags) {
-    htmlString += `<p>${randomQuote.tags}</p>`;
+  if (randomQuoteIndex.tags) {
+    htmlString += `<p>${randomQuoteIndex.tags}</p>`;
   }
+  var blue = Math.floor(Math.random() * 256);
+  var green = Math.floor(Math.random() * 256);
+  var red = Math.floor(Math.random() * 256);
+  var bluegredRand = `rgb(${blue}, ${green}, ${red})`;
+
+  document.body.style.backgroundColor = bluegredRand;
+
+
+  return htmlString;
+}
+
+printQuote();
+setInterval(printQuote(), 15000);
 
 document.getElementById('quote-box').innerHTML = quotes[htmlString];
-
-setInterval(printQuote(), 10000);
 
 /***
  * click event listener for the print quote button
@@ -118,4 +138,4 @@ setInterval(printQuote(), 10000);
 ***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
-}
+
