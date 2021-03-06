@@ -96,12 +96,13 @@ function getRandomColor() {
   // complete HTML string
 }
 ***/
+
 function printQuote() {
   var randomColor = getRandomColor();
   var randomQuoteIndex = getRandomQuote();
   var htmlString = `
-  <p class='quote'${randomQuoteIndex.quote} </p>
-  <p class='source'${randomQuoteIndex.source} 
+  <p class='quote'>${randomQuoteIndex.quote} </p>
+  <p class='source'>${randomQuoteIndex.source} 
   `;
   if (randomQuoteIndex.citation) {
     htmlString += `<span class='citation'>${randomQuoteIndex.citation}</span>`;
@@ -127,10 +128,13 @@ function printQuote() {
   return htmlString;
 }
 
-printQuote();
-setInterval(printQuote(), 15000);
+var htmlString = printQuote();
 
-document.getElementById('quote-box').innerHTML = quotes[htmlString];
+printQuote();
+
+//console.log(htmlString);
+
+setInterval(printQuote(), 15000);
 
 /***
  * click event listener for the print quote button
@@ -139,3 +143,4 @@ document.getElementById('quote-box').innerHTML = quotes[htmlString];
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
 
+document.getElementById('quote-box').innerHTML = htmlString;
