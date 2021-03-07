@@ -1,6 +1,7 @@
 /******************************************
 Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
+author = Joelle Walley
 ******************************************/
 //console.log('test');
 // For assistance: 
@@ -8,19 +9,32 @@ project 1 - A Random Quote Generator
   // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
 /*** 
- * `quotes` array 
- * var quotes = [{}, {}, {}, {}, {}];
+ * Array of Objects named quotes.
+ * 
+ * The variable quotes is an array of objects 
+ * which contain different properties and values. 
+ * quote is a string - the actual quote
+ * source is also a string - the person or character who said it
+ * citation (string) - The value should be a string holding a reference to the source of the quote.
+ * year (number) - The value should be a string or number representing the year the quote originated.
+ * 
+ * The properties inside of all of the 'quotes' are 
+ * the quotes and sources which are required.
+ * 
+ * For exceeding expectations I added  
+ * one object that has one additional property, such as tags.
+ * I also added an extra quote.
 ***/
 
 var quotes = [
   { quote: 'Life is very short and what we have to do must be done in the now.', 
   source: 'Audre Lorde', 
     citation: 'Audre Lorde Quotes. BrainyQuote.com. BrainyMedia Inc, 2021. 4 March 2021. www.brainyquote.com/quotes/audre_lorde_383487',
-    year: 2021}, 
+    year: 1968},
   { quote: 'It is not our differences that divide us. It is our inability to recognize, accept, and celebrate those differences.', 
     source: 'Audre Lorde', 
     citation: 'Audre Lorde Quotes. BrainyQuote.com. BrainyMedia Inc, 2021. 4 March 2021. https://www.brainyquote.com/quotes/audre_lorde_390625', 
-  year: 2021}, 
+  year: 1970}, 
 
   {
   quote: 'Try to be a rainbow in someone elses cloud', 
@@ -33,24 +47,28 @@ var quotes = [
   }, 
   {
     quote: 'When someone shows you who they are, believe them the first time.',
-    source: 'Maya Angelou'}
+    source: 'Maya Angelou'
+  },
+  {
+    quote: 'You can only become accomplished at something you love. Don’t make money your goal. Instead, pursue the things you love doing and then do them so well that people can’t take their eyes off you.',
+    source: 'Maya Angelou'
+
+  }
 ];
 
 /***
- * `getRandomQuote` function
- * function getRandomQuote() {
-  // 1. Create a variable that generates a random number
-  // between zero and the last index in the `quotes` array
-function diceRoll(array) {
-  var randomNumber = Math.ceil(Math.random()*len(array));
-  return randomNumber;
-
-  // 2. Use the random number variable and bracket notation
-  // to grab a random object from the `quotes` array, and
-  // store it in a variable
-
-  // 3. Return the variable storing the random quote object
-}
+ * This is the `getRandomQuote` function.
+ * 
+ * The getRandomQuote function creates a random number, 
+ * and uses that random number to 
+ * return a random quote object from the quotes array.
+ * 
+ * I also created a variable to store a random number 
+ * ranging from zero to the index of the last item in the quotes array.
+ * 
+ * @returns a random quote object using the 
+ * random number variable above and bracket notation on the quotes array.
+ * 
 ***/
 
 function getRandomQuote() {
@@ -61,6 +79,13 @@ function getRandomQuote() {
 
 getRandomQuote('go ahead and log out for me');
 
+/***
+ * This is the `getRandomColor` function.
+ *
+ * The getRandomColor function creates a random number,
+ * and uses that random number to
+ * @returns a random color object from the quotes array + 0.
+ ***/
 
 function getRandomColor() {
   var randomQuoteIndex = Math.floor(Math.random() * quotes.length) + 0;
@@ -68,33 +93,23 @@ function getRandomColor() {
 }
 
 /***
- * `printQuote` function
- * function printQuote() {
-  // 1. Create a variable that calls the getRandomQuote()
-  // function
-  var = getRandomQuote(quotes)
-
-  // 2. Create a variable that initiates your HTML string with
-  // the first two <p></p> elements, their classNames,
-  // and the quote and source properties, but leave off
-  // the second closing `</p>` tag for now
-
-  // 3. Use an if statement to check if the citation property
-  // exists, and if it does, concatenate a <span></span>
-  // element, appropriate className, and citation property
-  // to the HTML string
-
-  // 4. Use an if statement to check of the year property exists,
-  // and if it does, concatenate a <span></span> element,
-  // appropriate className, and year property to the HTML
-  //string
-
-  // 5. After the two if statements, concatenate the closing </p>
-  // tag to the HTML string
-
-  // 6. set the innerHTML of the quote-box div to equal the
-  // complete HTML string
-}
+ * This function displays a new quote each time the user clicks the 
+ * "Show another quote" button.
+ * In the body of the printQuote function,
+ * there is a variable to store a random quote object 
+ * from the getRandomQuote() function.
+ * I created another variable to store the HTML string.
+ * If the random quote object has a citation property, 
+ * concatenate a <span> element with the class "citation" to the HTML string.
+ * 
+ * If the random quote object has a year property, 
+ * concatenate a <span> element with the class "year" to the HTML string.
+ * Below the if statements, complete the string by concatenating a 
+ * closing </p> tag to the HTML string. 
+ * 
+ * This is the closing tag for the second paragraph with the class source.
+ * The printQuote function is set to return the full HTML string displaying a random quote.
+ * 
 ***/
 
 function printQuote() {
@@ -121,15 +136,18 @@ function printQuote() {
   var green = Math.floor(Math.random() * 256);
   var red = Math.floor(Math.random() * 256);
   var bluegredRand = `rgb(${blue}, ${green}, ${red})`;
-  
+ 
   document.getElementById('quote-box').innerHTML = htmlString;
   document.body.style.backgroundColor = bluegredRand;
   
 }
 
 var htmlString = printQuote();
+
 //console.log(htmlString);
 
+
+// Going for exceeds expectations with this setInterval function. 
 setInterval(printQuote, 15000);
 
 /***
