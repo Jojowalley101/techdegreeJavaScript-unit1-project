@@ -121,20 +121,16 @@ function printQuote() {
   var green = Math.floor(Math.random() * 256);
   var red = Math.floor(Math.random() * 256);
   var bluegredRand = `rgb(${blue}, ${green}, ${red})`;
-
+  
+  document.getElementById('quote-box').innerHTML = htmlString;
   document.body.style.backgroundColor = bluegredRand;
-
-
-  return htmlString;
+  
 }
 
 var htmlString = printQuote();
-
-printQuote();
-
 //console.log(htmlString);
 
-setInterval(printQuote(), 15000);
+setInterval(printQuote, 15000);
 
 /***
  * click event listener for the print quote button
@@ -143,4 +139,3 @@ setInterval(printQuote(), 15000);
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
 
-document.getElementById('quote-box').innerHTML = htmlString;
